@@ -1,5 +1,7 @@
 package com.cb.sp.petstore.entity;
 
+import java.math.BigDecimal;
+
 public class UserEntity{
 
 	private	Integer	userId;
@@ -12,9 +14,9 @@ public class UserEntity{
 
 	private String  headUrl;
 
-	private	Byte	role;
+	private	Integer	role;
 
-	private	Byte	sex;
+	private	Integer	sex;
 
 	private	Integer	age;
 
@@ -24,9 +26,11 @@ public class UserEntity{
 
 	private	String	address;
 
-	private	Long	cost;
+	private BigDecimal cost;
 
-	private	Byte	delete;
+	private	Integer	delete;
+
+	private String  email;
 
 	public	Integer	getUserId(){
 		return	userId;
@@ -44,11 +48,11 @@ public class UserEntity{
 		return	nickName;
 	}
 
-	public	Byte	getRole(){
+	public	Integer	getRole(){
 		return	role;
 	}
 
-	public	Byte	getSex(){
+	public	Integer	getSex(){
 		return	sex;
 	}
 
@@ -68,11 +72,11 @@ public class UserEntity{
 		return	address;
 	}
 
-	public	Long	getCost(){
+	public	BigDecimal	getCost(){
 		return	cost;
 	}
 
-	public	Byte	getDelete(){
+	public	Integer	getDelete(){
 		return	delete;
 	}
 
@@ -92,11 +96,11 @@ public class UserEntity{
 		this.nickName = nickName;
 	}
 
-	public void	setRole(Byte role){
+	public void	setRole(Integer role){
 		this.role = role;
 	}
 
-	public void	setSex(Byte sex){
+	public void	setSex(Integer sex){
 		this.sex = sex;
 	}
 
@@ -116,15 +120,23 @@ public class UserEntity{
 		this.address = address;
 	}
 
-	public void	setCost(Long cost){
+	public void	setCost(BigDecimal cost){
 		this.cost = cost;
 	}
 
-	public void	setDelete(Byte delete){
+	public void	setDelete(Integer delete){
 		this.delete = delete;
 	}
 
-	public String getHeadUrl() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHeadUrl() {
 		return headUrl;
 	}
 
@@ -132,22 +144,23 @@ public class UserEntity{
 		this.headUrl = headUrl;
 	}
 
-	@Override
-	public String toString() {
-		return "UserEntity{" +
-				"userId=" + userId +
-				", userName='" + userName + '\'' +
-				", password='" + password + '\'' +
-				", nickName='" + nickName + '\'' +
-				", headUrl='" + headUrl + '\'' +
-				", role=" + role +
-				", sex=" + sex +
-				", age=" + age +
-				", introduction='" + introduction + '\'' +
-				", telephone='" + telephone + '\'' +
-				", address='" + address + '\'' +
-				", cost=" + cost +
-				", delete=" + delete +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", headUrl='" + headUrl + '\'' +
+                ", role=" + role +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", introduction='" + introduction + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", cost=" + cost +
+                ", delete=" + delete +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

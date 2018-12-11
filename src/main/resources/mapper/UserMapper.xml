@@ -9,12 +9,21 @@
         <result column="head_url" property="headUrl" jdbcType="VARCHAR"/>
         <result column="role" property="role" jdbcType="TINYINT"/>
         <result column="sex" property="sex" jdbcType="TINYINT"/>
-        <result column="version" property="version" jdbcType="INTEGER"/>
-        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
-        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="cost" property="cost" jdbcType="DECIMAL"/>
+        <result column="delete" property="delete" jdbcType="TINYINT"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
-        <result column="invatation_code" property="invatationCode" jdbcType="VARCHAR"/>
-        <result column="is_delete" property="isDelete" jdbcType="TINYINT"/>
     </resultMap>
+
+    <select id="login" parameterType="int" resultType="com.cb.sp.petstore.dto.LoginDto">
+        SELECT user_name userName, password pasword FROM user WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertUser" parameterType="com.cb.sp.petstore.dto.RegisterDto" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user(user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address)
+        VALUES(#{userName}, #{password}, #{nickName}, #{headUrl}, #{role}, #{age}, #{email}, #{introduction}, #{telephone}, #{address})
+    </insert>
 
 </mapper>
