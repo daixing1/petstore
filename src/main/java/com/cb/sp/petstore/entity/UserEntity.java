@@ -10,6 +10,8 @@ public class UserEntity{
 
 	private	String	nickName;
 
+	private String  headUrl;
+
 	private	Byte	role;
 
 	private	Byte	sex;
@@ -122,6 +124,14 @@ public class UserEntity{
 		this.delete = delete;
 	}
 
+	public String getHeadUrl() {
+		return headUrl;
+	}
+
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "UserEntity{" +
@@ -129,6 +139,7 @@ public class UserEntity{
 				", userName='" + userName + '\'' +
 				", password='" + password + '\'' +
 				", nickName='" + nickName + '\'' +
+				", headUrl='" + headUrl + '\'' +
 				", role=" + role +
 				", sex=" + sex +
 				", age=" + age +

@@ -1,3 +1,4 @@
+/*
 package com.cb.sp.petstore.dao;
 
 import java.sql.ResultSet;
@@ -31,3 +32,4 @@ public interface CartDAO {
 
 	int getProdIDByCartID(int cartID);
 }
+*/

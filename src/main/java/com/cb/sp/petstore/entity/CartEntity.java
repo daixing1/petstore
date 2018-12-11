@@ -10,7 +10,7 @@ public class CartEntity{
 
 	private	Integer	productNum;
 
-	private	Byte	state;
+	private	Integer	state;
 
 	private	String	productName;
 
@@ -32,7 +32,7 @@ public class CartEntity{
 		return	productNum;
 	}
 
-	public	Byte	getState(){
+	public	Integer	getState(){
 		return	state;
 	}
 
@@ -60,7 +60,7 @@ public class CartEntity{
 		this.productNum = productNum;
 	}
 
-	public void	setState(Byte state){
+	public void	setState(Integer state){
 		this.state = state;
 	}
 

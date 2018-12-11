@@ -1,5 +1,6 @@
 package com.cb.sp.petstore.entity;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class CommentEntity{
@@ -10,13 +11,13 @@ public class CommentEntity{
 
 	private	Integer	productId;
 
-	private	Timestamp	time;
+	private Date time;
 
 	private	String	comment;
 
 	private	Integer	replyId;
 
-	private	Byte	delete;
+	private	Integer	delete;
 
 	public	Integer	getCommentId(){
 		return	commentId;
@@ -30,7 +31,7 @@ public class CommentEntity{
 		return	productId;
 	}
 
-	public	Timestamp	getTime(){
+	public	Date	getTime(){
 		return	time;
 	}
 
@@ -42,7 +43,7 @@ public class CommentEntity{
 		return	replyId;
 	}
 
-	public	Byte	getDelete(){
+	public	Integer	getDelete(){
 		return	delete;
 	}
 
@@ -58,7 +59,7 @@ public class CommentEntity{
 		this.productId = productId;
 	}
 
-	public void	setTime(Timestamp time){
+	public void	setTime(Date time){
 		this.time = time;
 	}
 
@@ -70,7 +71,7 @@ public class CommentEntity{
 		this.replyId = replyId;
 	}
 
-	public void	setDelete(Byte delete){
+	public void	setDelete(Integer delete){
 		this.delete = delete;
 	}
 

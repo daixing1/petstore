@@ -1,3 +1,4 @@
+/*
 package com.cb.sp.petstore.dao;
 
 import java.sql.ResultSet;
@@ -43,3 +44,4 @@ public interface OrderDAO {
 	boolean deleteOrder(int orderID);
 
 }
+*/

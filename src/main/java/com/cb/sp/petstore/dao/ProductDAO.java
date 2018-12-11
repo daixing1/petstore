@@ -1,3 +1,4 @@
+/*
 package com.cb.sp.petstore.dao;
 
 import java.sql.ResultSet;
@@ -120,3 +121,4 @@ public interface ProductDAO {
 
 	boolean modifyProdNum1(int prodID, int prodNum);
 }
+*/

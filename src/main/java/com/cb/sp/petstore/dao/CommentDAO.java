@@ -1,3 +1,4 @@
+/*
 package com.cb.sp.petstore.dao;
 
 
@@ -21,3 +22,4 @@ public interface CommentDAO {
 
 	List<comments> getALLComments();
 }
+*/

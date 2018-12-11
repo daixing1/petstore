@@ -1,18 +1,20 @@
 package com.cb.sp.petstore.entity;
 
+import java.math.BigDecimal;
+
 public class ProductEntity{
 
 	private	Integer	productId;
 
 	private	String	productName;
 
-	private	Long	price;
+	private BigDecimal price;
 
 	private	Integer	number;
 
 	private	String	introduction;
 
-	private	Byte	type;
+	private	Integer	type;
 
 	private	Integer	age;
 
@@ -20,7 +22,7 @@ public class ProductEntity{
 
 	private	String	area;
 
-	private	Byte	recommendation;
+	private	Integer	recommendation;
 
 	private	Integer	salesVolum;
 
@@ -30,7 +32,7 @@ public class ProductEntity{
 
 	private	String	shape;
 
-	private	Byte	delete;
+	private	Integer	delete;
 
 	public	Integer	getProductId(){
 		return	productId;
@@ -40,7 +42,7 @@ public class ProductEntity{
 		return	productName;
 	}
 
-	public	Long	getPrice(){
+	public	BigDecimal	getPrice(){
 		return	price;
 	}
 
@@ -52,7 +54,7 @@ public class ProductEntity{
 		return	introduction;
 	}
 
-	public	Byte	getType(){
+	public	Integer	getType(){
 		return	type;
 	}
 
@@ -68,7 +70,7 @@ public class ProductEntity{
 		return	area;
 	}
 
-	public	Byte	getRecommendation(){
+	public	Integer	getRecommendation(){
 		return	recommendation;
 	}
 
@@ -88,7 +90,7 @@ public class ProductEntity{
 		return	shape;
 	}
 
-	public	Byte	getDelete(){
+	public	Integer	getDelete(){
 		return	delete;
 	}
 
@@ -100,7 +102,7 @@ public class ProductEntity{
 		this.productName = productName;
 	}
 
-	public void	setPrice(Long price){
+	public void	setPrice(BigDecimal price){
 		this.price = price;
 	}
 
@@ -112,7 +114,7 @@ public class ProductEntity{
 		this.introduction = introduction;
 	}
 
-	public void	setType(Byte type){
+	public void	setType(Integer type){
 		this.type = type;
 	}
 
@@ -128,7 +130,7 @@ public class ProductEntity{
 		this.area = area;
 	}
 
-	public void	setRecommendation(Byte recommendation){
+	public void	setRecommendation(Integer recommendation){
 		this.recommendation = recommendation;
 	}
 
@@ -148,7 +150,7 @@ public class ProductEntity{
 		this.shape = shape;
 	}
 
-	public void	setDelete(Byte delete){
+	public void	setDelete(Integer delete){
 		this.delete = delete;
 	}
 
