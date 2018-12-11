@@ -3,6 +3,7 @@ package com.cb.sp.petstore.biz.impl;
 import com.cb.sp.petstore.biz.UserBiz;
 import com.cb.sp.petstore.dao.UserDAO;
 import com.cb.sp.petstore.dto.LoginDto;
+import com.cb.sp.petstore.dto.RegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,5 +27,10 @@ public class UserBizImpl implements UserBiz {
             flag = true;
         }
         return flag;
+    }
+
+    @Override
+    public Integer register(RegisterDto registerDto) {
+        return null;
     }
 }
