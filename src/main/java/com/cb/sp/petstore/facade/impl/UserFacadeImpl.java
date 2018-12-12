@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018/12/11 15:53
  */
 @RestController
-@RequestMapping("petstore")
+@RequestMapping("user")
 public class UserFacadeImpl  implements UserFacade {
 
     @Autowired
