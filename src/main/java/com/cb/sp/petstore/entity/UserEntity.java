@@ -28,7 +28,7 @@ public class UserEntity{
 
 	private BigDecimal cost;
 
-	private	Integer	delete;
+	private	Integer	isDelete;
 
 	private String  email;
 
@@ -76,9 +76,6 @@ public class UserEntity{
 		return	cost;
 	}
 
-	public	Integer	getDelete(){
-		return	delete;
-	}
 
 	public void	setUserId(Integer userId){
 		this.userId = userId;
@@ -124,9 +121,13 @@ public class UserEntity{
 		this.cost = cost;
 	}
 
-	public void	setDelete(Integer delete){
-		this.delete = delete;
-	}
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 
     public String getEmail() {
         return email;
@@ -159,8 +160,9 @@ public class UserEntity{
                 ", telephone='" + telephone + '\'' +
                 ", address='" + address + '\'' +
                 ", cost=" + cost +
-                ", delete=" + delete +
+                ", isDelete=" + isDelete +
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }

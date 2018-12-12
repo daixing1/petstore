@@ -17,7 +17,7 @@ public class CommentEntity{
 
 	private	Integer	replyId;
 
-	private	Integer	delete;
+	private	Integer	isDelete;
 
 	public	Integer	getCommentId(){
 		return	commentId;
@@ -41,10 +41,6 @@ public class CommentEntity{
 
 	public	Integer	getReplyId(){
 		return	replyId;
-	}
-
-	public	Integer	getDelete(){
-		return	delete;
 	}
 
 	public void	setCommentId(Integer commentId){
@@ -71,8 +67,12 @@ public class CommentEntity{
 		this.replyId = replyId;
 	}
 
-	public void	setDelete(Integer delete){
-		this.delete = delete;
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class CommentEntity{
 				", time=" + time +
 				", comment='" + comment + '\'' +
 				", replyId=" + replyId +
-				", delete=" + delete +
+				", isDelete=" + isDelete +
 				'}';
 	}
 }
