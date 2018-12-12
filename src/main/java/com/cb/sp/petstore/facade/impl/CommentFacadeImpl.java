@@ -6,8 +6,7 @@ import com.cb.sp.petstore.entity.CommentEntity;
 import com.cb.sp.petstore.facade.CommentFacade;
 import com.cb.sp.petstore.util.BizException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,12 +25,14 @@ public class CommentFacadeImpl implements CommentFacade {
     CommentDAO commentDAO;
 
     @Override
-    public Boolean addComment(CommentEntity commentEntity) {
+    @PostMapping("addComment")
+    public Boolean addComment(@RequestBody CommentEntity commentEntity) {
         return commentDAO.addComment(commentEntity);
     }
 
     @Override
-    public Boolean replyComment(CommentEntity commentEntity) {
+    @PostMapping("replyComment")
+    public Boolean replyComment(@RequestBody CommentEntity commentEntity) {
         if (null == commentEntity.getReplyId()){
             throw new BizException("回复ID不能为空");
         }
@@ -39,7 +40,8 @@ public class CommentFacadeImpl implements CommentFacade {
     }
 
     @Override
-    public List<CommentEntity> getAllProductComment(Integer productId) {
+    @GetMapping("getAllProductComment")
+    public List<CommentEntity> getAllProductComment(@RequestParam("productId") Integer productId) {
         return commentDAO.getAllProductComments(productId);
     }
 }

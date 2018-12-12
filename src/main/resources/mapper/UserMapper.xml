@@ -18,9 +18,9 @@
     </resultMap>
 
     <select id="login" parameterType="String" resultType="com.cb.sp.petstore.dto.LoginDto">
-        SELECT user_id userId, user_name userName, password pasword
+        SELECT user_id userId, user_name userName, password password
         FROM user
-        WHERE user_id = #{userId}
+        WHERE user_name = #{userName}
           AND is_delete = 0
     </select>
 
@@ -106,7 +106,7 @@
     </select>
 
     <select id="getUserById" parameterType="integer" resultMap="BaseResultMap">
-        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address FROM user
+        SELECT user_id, user_name, password, nick_name, head_url, role, sex, age, email, introduction, telephone, address FROM user
         WHERE user_id = #{userId}
         AND is_delete = 0
     </select>
@@ -114,16 +114,16 @@
     <update id="updateUser" parameterType="com.cb.sp.petstore.entity.UserEntity">
         UPDATE user
         <set>
-            <if test="user_name != null">
+            <if test="userName != null">
                 user_name = #{userName},
             </if>
             <if test="password != null">
                 password = #{password},
             </if>
-            <if test="nick_name != null">
+            <if test="nickName != null">
                 nick_name = #{nickName},
             </if>
-            <if test="head_url != null">
+            <if test="headUrl != null">
                 head_url = #{headUrl},
             </if>
             <if test="role != null">
@@ -145,6 +145,7 @@
                 address = #{address},
             </if>
         </set>
+        WHERE user_id = #{userId}
     </update>
 
     <select id="getAllUser" resultMap="BaseResultMap">

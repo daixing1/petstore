@@ -5,8 +5,7 @@ import com.cb.sp.petstore.dao.OrderDAO;
 import com.cb.sp.petstore.entity.OrderEntity;
 import com.cb.sp.petstore.facade.OrderFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,33 +24,39 @@ public class OrderFacadeImpl implements OrderFacade {
     OrderDAO orderDAO;
 
     @Override
-    public List<OrderEntity> getOrderByUserId(Integer userId) {
+    @GetMapping("getOrderByUserId")
+    public List<OrderEntity> getOrderByUserId(@RequestParam("userId") Integer userId) {
 
         return orderDAO.getOrdersByUser(userId);
     }
 
     @Override
-    public Boolean addOrder(OrderEntity orderEntity) {
+    @PostMapping("addOrder")
+    public Boolean addOrder(@RequestBody OrderEntity orderEntity) {
         return orderDAO.addOrder(orderEntity);
     }
 
     @Override
-    public Boolean updateOrder(OrderEntity orderEntity) {
-        return updateOrder(orderEntity);
+    @PostMapping("updateOrder")
+    public Boolean updateOrder(@RequestBody OrderEntity orderEntity) {
+        return orderDAO.modifyOrder(orderEntity);
     }
 
     @Override
-    public Boolean deleteOrder(Integer orderId) {
+    @GetMapping("deleteOrder")
+    public Boolean deleteOrder(@RequestParam("orderId") Integer orderId) {
         return orderDAO.deleteOrder(orderId);
     }
 
     @Override
+    @GetMapping("getAllOrder")
     public List<OrderEntity> getAllOrder() {
         return orderDAO.getALLOrders();
     }
 
     @Override
-    public OrderEntity getOrderById(Integer orderId) {
+    @GetMapping("getOrderById")
+    public OrderEntity getOrderById(@RequestParam("orderId") Integer orderId) {
         return orderDAO.searchOrder(orderId);
     }
 }
