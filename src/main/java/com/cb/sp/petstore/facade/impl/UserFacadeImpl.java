@@ -44,7 +44,23 @@ public class UserFacadeImpl  implements UserFacade {
         return user;
     }
 
+    @Override
+    public Boolean updateUser(UserEntity userEntity) {
+        Boolean flag = userDAO.updateUser(userEntity);
+        return flag;
+    }
 
+    @Override
+    public Boolean deleteByUserName(String userName) {
+        Boolean flag = userDAO.deleteByUserName(userName);
+        return flag;
+    }
+
+    @Override
+    public Boolean deleteByUserId(Integer userId) {
+        Boolean flag = userDAO.deleteByUserId(userId);
+        return flag;
+    }
 
 
 }
