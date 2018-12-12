@@ -32,7 +32,7 @@ public class ProductEntity{
 
 	private	String	shape;
 
-	private	Integer	delete;
+	private	Integer	isDelete;
 
 	public	Integer	getProductId(){
 		return	productId;
@@ -88,10 +88,6 @@ public class ProductEntity{
 
 	public	String	getShape(){
 		return	shape;
-	}
-
-	public	Integer	getDelete(){
-		return	delete;
 	}
 
 	public void	setProductId(Integer productId){
@@ -150,8 +146,12 @@ public class ProductEntity{
 		this.shape = shape;
 	}
 
-	public void	setDelete(Integer delete){
-		this.delete = delete;
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
 	}
 
 	@Override
@@ -171,7 +171,7 @@ public class ProductEntity{
 				", character='" + character + '\'' +
 				", function='" + function + '\'' +
 				", shape='" + shape + '\'' +
-				", delete=" + delete +
+				", isDelete=" + isDelete +
 				'}';
 	}
 }

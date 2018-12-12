@@ -13,17 +13,94 @@
         <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
         <result column="cost" property="cost" jdbcType="DECIMAL"/>
-        <result column="delete" property="delete" jdbcType="TINYINT"/>
+        <result column="delete" property="isDelete" jdbcType="TINYINT"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="login" parameterType="int" resultType="com.cb.sp.petstore.dto.LoginDto">
-        SELECT user_name userName, password pasword FROM user WHERE user_id = #{userId}
+    <select id="login" parameterType="String" resultType="com.cb.sp.petstore.dto.LoginDto">
+        SELECT user_id userId, user_name userName, password pasword
+        FROM user
+        WHERE user_id = #{userId}
+          AND is_delete = 0
     </select>
 
     <insert id="insertUser" parameterType="com.cb.sp.petstore.dto.RegisterDto" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO user(user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address)
         VALUES(#{userName}, #{password}, #{nickName}, #{headUrl}, #{role}, #{age}, #{email}, #{introduction}, #{telephone}, #{address})
     </insert>
+
+    <select id="getUserByEmail" parameterType="String" resultMap="BaseResultMap">
+        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address
+        FROM user
+        WHERE email = #{email}
+        AND is_delete = 0
+    </select>
+
+    <select id="getUserById" parameterType="integer" resultMap="BaseResultMap">
+        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address FROM user
+        WHERE user_id = #{userId}
+        AND is_delete = 0
+    </select>
+
+    <update id="updateUser" parameterType="com.cb.sp.petstore.entity.UserEntity">
+        UPDATE user
+        <set>
+            <if test="user_name != null">
+                user_name = #{userName}
+            </if>
+            <if test="password != null">
+                password = #{password}
+            </if>
+            <if test="nick_name != null">
+                nick_name = #{nickName}
+            </if>
+            <if test="head_url != null">
+                head_url = #{headUrl}
+            </if>
+            <if test="role != null">
+                role = #{role}
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+            <if test="email != null">
+                email = #{email}
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction}
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone}
+            </if>
+            <if test="address != null">
+                address = #{address}
+            </if>
+        </set>
+    </update>
+
+    <select id="getAllUser" resultMap="BaseResultMap">
+        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address
+        FROM user
+        WHERE is_delete = 0
+        LIMIT 10
+    </select>
+
+    <select id="getUserByName" parameterType="String" resultMap="BaseResultMap">
+        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address FROM user
+        WHERE user_name like concat('%', #{name}, '%')
+        AND is_delete = 0
+    </select>
+
+    <update id="deleteByUserName" parameterType="String">
+        UPDATE user
+        SET is_delete = 1
+        WHERE user_name = #{UserName}
+    </update>
+
+    <update id="deleteByUserId" parameterType="integer">
+        UPDATE user
+        SET is_delete = 1
+        WHERE user_id = #{UserId}
+    </update>
 
 </mapper>

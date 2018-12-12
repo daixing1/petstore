@@ -29,7 +29,7 @@ public class OrderEntity{
 
     private String comment;
 
-    private Integer delete;
+    private Integer isDelete;
 
 
     public Integer getOrderId() {
@@ -128,12 +128,12 @@ public class OrderEntity{
         this.comment = comment;
     }
 
-    public Integer getDelete() {
-        return delete;
+    public Integer getIsDelete() {
+        return isDelete;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     @Override
@@ -151,7 +151,7 @@ public class OrderEntity{
                 ", telephone='" + telephone + '\'' +
                 ", address='" + address + '\'' +
                 ", comment='" + comment + '\'' +
-                ", delete=" + delete +
+                ", isDelete=" + isDelete +
                 '}';
     }
 }

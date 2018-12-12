@@ -10,6 +10,7 @@ import java.io.Serializable;
 public class RegisterDto implements Serializable {
 
     private static final long serialVersionUID = 352395061226448356L;
+    private Integer userId;
     private String userName;
     private String password;
     private String nickName;
@@ -102,10 +103,27 @@ public class RegisterDto implements Serializable {
         this.address = address;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
         return "RegisterDto{" +
-                "userName='" + userName + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", headUrl='" + headUrl + '\'' +
