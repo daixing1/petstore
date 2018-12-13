@@ -23,6 +23,7 @@ public class RegisterDto implements Serializable {
     private String telephone;
     private String address;
 
+
     public String getPassword() {
         return password;
     }

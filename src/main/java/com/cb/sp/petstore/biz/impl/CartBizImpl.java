@@ -12,6 +12,12 @@ import org.springframework.stereotype.Component;
  * @author 杨涛
  * @description TODO
  * @date 2018/12/12 16:33
+import org.springframework.stereotype.Component;
+
+/**
+ * @author 戴兴
+ * @description TODO
+ * @date 2018/12/12 14:47
  */
 @Component("cartBiz")
 public class CartBizImpl implements CartBiz {
@@ -27,3 +33,4 @@ public class CartBizImpl implements CartBiz {
         return cartEntity;
     }
 }
+

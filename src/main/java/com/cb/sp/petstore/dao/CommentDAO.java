@@ -1,25 +1,26 @@
-/*
 package com.cb.sp.petstore.dao;
 
 
+import com.cb.sp.petstore.entity.CommentEntity;
+
+import java.util.List;
 
 public interface CommentDAO {
 
-	boolean writeComment(int userID, int productID, String time, String comment);
+	Boolean addComment(CommentEntity commentEntity);
 
 
-	boolean replyComment(int userID, int ProductID, String time, String comment, int ReplyID);
+	Boolean replyComment(CommentEntity commentEntity);
 
 
-	boolean deleteComment(int commentID);
+	Boolean deleteComment(Integer commentID);
 
 
-	comments searchComments(int productID);
+	CommentEntity searchComments(Integer productID);
 
 
-	List<comments> getAllComments(int productID);
+	List<CommentEntity> getAllProductComments(Integer productID);
 
 
-	List<comments> getALLComments();
+	List<CommentEntity> getALLComments();
 }
-*/

@@ -1,47 +1,26 @@
-/*
 package com.cb.sp.petstore.dao;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
-import VO.carts;
-import VO.orders;
+import com.cb.sp.petstore.entity.OrderEntity;
+
+import java.util.List;
 
 public interface OrderDAO {
 
-	orders searchOrder(int orderID);
+    Boolean addOrder(OrderEntity orderEntity);
+
+	OrderEntity searchOrder(Integer orderID);
 
 
-	List<orders> getALLOrders();
+	List<OrderEntity> getALLOrders();
 	
 
-	List<orders> getOrdersByUser(int userID);
+	List<OrderEntity> getOrdersByUser(Integer userID);
 
 
-	boolean modifyOrder(int orderID, String time, int productID, int userID, String state, int num, int price,
-                               int telephone, String address, String name);
+	Boolean modifyOrder(OrderEntity orderEntity);
 
 
-	boolean modifyState(String state, int orderID);
-
-
-	boolean modifyNum(int num, int orderID);
-
-
-	boolean modifyPrice(int price, int orderID);
-
-
-	boolean modifyTele(String telephone, int orderID);
-
-
-	boolean modifyAddress(String address, int orderID);
-
-
-	boolean modifyName(String name, int orderID);
-
-
-	boolean deleteOrder(int orderID);
+	Boolean deleteOrder(Integer orderID);
 
 }
-*/

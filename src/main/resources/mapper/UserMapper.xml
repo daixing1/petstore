@@ -18,15 +18,84 @@
     </resultMap>
 
     <select id="login" parameterType="String" resultType="com.cb.sp.petstore.dto.LoginDto">
-        SELECT user_id userId, user_name userName, password pasword
+        SELECT user_id userId, user_name userName, password password
         FROM user
-        WHERE user_id = #{userId}
+        WHERE user_name = #{userName}
           AND is_delete = 0
     </select>
 
     <insert id="insertUser" parameterType="com.cb.sp.petstore.dto.RegisterDto" useGeneratedKeys="true" keyProperty="userId">
-        INSERT INTO user(user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address)
-        VALUES(#{userName}, #{password}, #{nickName}, #{headUrl}, #{role}, #{age}, #{email}, #{introduction}, #{telephone}, #{address})
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="userName != null" >
+            user_name,
+        </if>
+        <if test="password != null" >
+            password,
+        </if>
+        <if test="nickName != null" >
+            nick_name,
+        </if>
+        <if test="headUrl != null" >
+            head_url,
+        </if>
+        <if test="role != null" >
+            role,
+        </if>
+        <if test="sex != null" >
+            sex,
+        </if>
+        <if test="age != null" >
+            age,
+        </if>
+        <if test="email != null" >
+            email,
+        </if>
+        <if test="introduction != null" >
+            introduction,
+        </if>
+        <if test="telephone != null" >
+            telephone,
+        </if>
+        <if test="address != null" >
+            address,
+        </if>
+    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null" >
+                #{userName},
+            </if>
+            <if test="password != null" >
+                #{password},
+            </if>
+            <if test="nickName != null" >
+                #{nickName},
+            </if>
+            <if test="headUrl != null" >
+                #{headUrl},
+            </if>
+            <if test="role != null" >
+                #{role},
+            </if>
+            <if test="sex != null" >
+                #{sex},
+            </if>
+            <if test="age != null" >
+                #{age},
+            </if>
+            <if test="email != null" >
+                #{email},
+            </if>
+            <if test="introduction != null" >
+                #{introduction},
+            </if>
+            <if test="telephone != null" >
+                #{telephone},
+            </if>
+            <if test="address != null" >
+                #{address},
+            </if>
+        </trim>
     </insert>
 
     <select id="getUserByEmail" parameterType="String" resultMap="BaseResultMap">
@@ -37,7 +106,7 @@
     </select>
 
     <select id="getUserById" parameterType="integer" resultMap="BaseResultMap">
-        SELECT user_id, user_name, password, nick_name, head_url, role, age, email, introduction, telephone, address FROM user
+        SELECT user_id, user_name, password, nick_name, head_url, role, sex, age, email, introduction, telephone, address FROM user
         WHERE user_id = #{userId}
         AND is_delete = 0
     </select>
@@ -45,37 +114,38 @@
     <update id="updateUser" parameterType="com.cb.sp.petstore.entity.UserEntity">
         UPDATE user
         <set>
-            <if test="user_name != null">
-                user_name = #{userName}
+            <if test="userName != null">
+                user_name = #{userName},
             </if>
             <if test="password != null">
-                password = #{password}
+                password = #{password},
             </if>
-            <if test="nick_name != null">
-                nick_name = #{nickName}
+            <if test="nickName != null">
+                nick_name = #{nickName},
             </if>
-            <if test="head_url != null">
-                head_url = #{headUrl}
+            <if test="headUrl != null">
+                head_url = #{headUrl},
             </if>
             <if test="role != null">
-                role = #{role}
+                role = #{role},
             </if>
             <if test="age != null">
-                age = #{age}
+                age = #{age},
             </if>
             <if test="email != null">
-                email = #{email}
+                email = #{email},
             </if>
             <if test="introduction != null">
-                introduction = #{introduction}
+                introduction = #{introduction},
             </if>
             <if test="telephone != null">
-                telephone = #{telephone}
+                telephone = #{telephone},
             </if>
             <if test="address != null">
-                address = #{address}
+                address = #{address},
             </if>
         </set>
+        WHERE user_id = #{userId}
     </update>
 
     <select id="getAllUser" resultMap="BaseResultMap">

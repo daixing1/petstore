@@ -31,7 +31,7 @@ public class ProductFacadeImpl implements ProductFacade {
     public List<ProductDto> getProductList(ProductDto productDto) {
         List<ProductDto> productDtos = new ArrayList<>();
         LOGGER.info("productDto----------"+productDto+"-------------");
-        productDtos = productBiz.getProductList(productDto);
+        //productDtos = productBiz.getProductList(productDto);
         return productDtos;
     }
 }

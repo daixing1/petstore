@@ -17,4 +17,10 @@ public interface UserFacade {
 
     UserEntity getUser(Integer userId);
 
+    Boolean updateUser(UserEntity userEntity);
+
+    Boolean deleteByUserName(String userName);
+
+    Boolean deleteByUserId(Integer userId);
+
 }

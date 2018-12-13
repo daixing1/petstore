@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018/12/11 15:53
  */
 @RestController
-@RequestMapping("petstore")
+@RequestMapping("user")
 public class UserFacadeImpl  implements UserFacade {
 
     @Autowired
@@ -44,7 +44,26 @@ public class UserFacadeImpl  implements UserFacade {
         return user;
     }
 
+    @Override
+    @PostMapping("updateUser")
+    public Boolean updateUser(@RequestBody UserEntity userEntity) {
+        Boolean flag = userDAO.updateUser(userEntity);
+        return flag;
+    }
 
+    @Override
+    @GetMapping("deleteByUserName")
+    public Boolean deleteByUserName(@RequestParam("userName") String userName) {
+        Boolean flag = userDAO.deleteByUserName(userName);
+        return flag;
+    }
+
+    @Override
+    @GetMapping("deleteByUserId")
+    public Boolean deleteByUserId(@RequestParam("userId") Integer userId) {
+        Boolean flag = userDAO.deleteByUserId(userId);
+        return flag;
+    }
 
 
 }

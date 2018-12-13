@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cb.sp.petstore.dao.CommentDAO">
+    <resultMap id="BaseResultMap" type="com.cb.sp.petstore.entity.CommentEntity">
+        <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+        <result column="reply_id" property="replyId" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="addComment" parameterType="com.cb.sp.petstore.entity.CommentEntity">
+        INSERT INTO comment(user_id, product_id, time, comment)
+        VALUES (#{userId}, #{productId}, #{time}, #{comment})
+    </insert>
+
+    <insert id="replyComment" parameterType="com.cb.sp.petstore.entity.CommentEntity">
+        INSERT INTO comment(user_id, product_id, time, comment, reply_id)
+        VALUES (#{userId}, #{productId}, #{time}, #{comment}, #{replyId})
+    </insert>
+
+    <update id="deleteComment" parameterType="integer">
+        UPDATE comment
+        SET is_delete = 1
+        WHERE comment_id = #{commentID}
+    </update>
+
+    <select id="searchComments" resultMap="BaseResultMap">
+        SELECT comment_id, user_id, product_id, time, comment, reply_id
+        FROM comment
+        WHERE product_id = #{productID}
+          AND is_delete = 0
+        ORDER BY time DESC
+        Limit 1
+    </select>
+
+    <select id="getAllProductComments" parameterType="integer" resultMap="BaseResultMap">
+        SELECT comment_id, user_id, product_id, time, comment, reply_id
+        FROM comment
+        WHERE product_id = #{productID}
+          AND is_delete = 0
+        ORDER BY time DESC
+    </select>
+
+    <select id="getALLComments" resultMap="BaseResultMap">
+        SELECT comment_id, user_id, product_id, time, comment, reply_id
+        FROM comment
+        WHERE is_delete = 0
+        ORDER BY time DESC
+    </select>
+</mapper>
