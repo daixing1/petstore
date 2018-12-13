@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cb.sp.petstore.dao.ProductDAO">
+    <resultMap id="BaseResultMap" type="com.cb.sp.petstore.entity.ProductEntity">
+        <id column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="BIGINT"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="TINYINT"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="variety" property="variety" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="recommendation" property="recommendation" jdbcType="TINYINT"/>
+        <result column="sales_volum" property="salesVolum" jdbcType="INTEGER"/>
+        <result column="characters" property="characters" jdbcType="VARCHAR"/>
+        <result column="product_function" property="productFunction" jdbcType="VARCHAR"/>
+        <result column="product_shape" property="productShape" jdbcType="VARCHAR"/>
+        <result column="product_is_delete" property="productIsDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <resultMap id="ProductResultMap" type="com.cb.sp.petstore.dto.ProductDto">
+        <id column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="BIGINT"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="TINYINT"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="variety" property="variety" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="recommendation" property="recommendation" jdbcType="TINYINT"/>
+        <result column="sales_volum" property="salesVolum" jdbcType="INTEGER"/>
+        <result column="characters" property="characters" jdbcType="VARCHAR"/>
+        <result column="product_function" property="productFunction" jdbcType="VARCHAR"/>
+        <result column="product_shape" property="productShape" jdbcType="VARCHAR"/>
+        <result column="product_is_delete" property="productIsDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		product_id,product_name,price,number,introduction,type,age,variety,area,recommendation,sales_volum,characters,product_function,product_shape,product_is_delete
+	</sql>
+    <insert id="insert" parameterType="com.cb.sp.petstore.entity.ProductEntity">
+		insert into product(product_id,
+			product_name,
+			price,
+			number,
+			introduction,
+			type,
+			age,
+			variety,
+			area,
+			recommendation,
+			sales_volum,
+			characters,
+			product_function,
+			product_shape,
+			product_is_delete)
+		values (#{productId,jdbcType=INTEGER},
+			#{productName,jdbcType=VARCHAR},
+			#{price,jdbcType=BIGINT},
+			#{number,jdbcType=INTEGER},
+			#{introduction,jdbcType=VARCHAR},
+			#{type,jdbcType=TINYINT},
+			#{age,jdbcType=INTEGER},
+			#{variety,jdbcType=VARCHAR},
+			#{area,jdbcType=VARCHAR},
+			#{recommendation,jdbcType=TINYINT},
+			#{salesVolum,jdbcType=INTEGER},
+			#{characters,jdbcType=VARCHAR},
+			#{productFunction,jdbcType=VARCHAR},
+			#{productShape,jdbcType=VARCHAR},
+			#{productIsDelete,jdbcType=TINYINT})
+	</insert>
+    <insert id="insertSelective" parameterType="com.cb.sp.petstore.entity.ProductEntity">
+        insert into product
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="productId != null" >
+                product_id,
+            </if>
+            <if test="productName != null" >
+                product_name,
+            </if>
+            <if test="price != null" >
+                price,
+            </if>
+            <if test="number != null" >
+                number,
+            </if>
+            <if test="introduction != null" >
+                introduction,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="variety != null" >
+                variety,
+            </if>
+            <if test="area != null" >
+                area,
+            </if>
+            <if test="recommendation != null" >
+                recommendation,
+            </if>
+            <if test="salesVolum != null" >
+                sales_volum,
+            </if>
+            <if test="characters != null" >
+                characters,
+            </if>
+            <if test="productFunction != null" >
+                product_function,
+            </if>
+            <if test="productShape != null" >
+                product_shape,
+            </if>
+            <if test="productIsDelete != null" >
+                product_is_delete,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="productId != null" >
+                #{productId,jdbcType=INTEGER},
+            </if>
+            <if test="productName != null" >
+                #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                #{price,jdbcType=BIGINT},
+            </if>
+            <if test="number != null" >
+                #{number,jdbcType=INTEGER},
+            </if>
+            <if test="introduction != null" >
+                #{introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=TINYINT},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="variety != null" >
+                #{variety,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null" >
+                #{area,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendation != null" >
+                #{recommendation,jdbcType=TINYINT},
+            </if>
+            <if test="salesVolum != null" >
+                #{salesVolum,jdbcType=INTEGER},
+            </if>
+            <if test="characters != null" >
+                #{characters,jdbcType=VARCHAR},
+            </if>
+            <if test="productFunction != null" >
+                #{productFunction,jdbcType=VARCHAR},
+            </if>
+            <if test="productShape != null" >
+                #{productShape,jdbcType=VARCHAR},
+            </if>
+            <if test="productIsDelete != null" >
+                #{productIsDelete,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+		delete from product where product_id= #{productId,jdbcType=INTEGER}
+	</delete>
+    <update id="updateByIdSelective" parameterType="com.cb.sp.petstore.entity.ProductEntity">
+        update product
+        <set>
+            <if test="productName != null" >
+                product_name=#{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                price=#{price,jdbcType=BIGINT},
+            </if>
+            <if test="number != null" >
+                number=#{number,jdbcType=INTEGER},
+            </if>
+            <if test="introduction != null" >
+                introduction=#{introduction,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type=#{type,jdbcType=TINYINT},
+            </if>
+            <if test="age != null" >
+                age=#{age,jdbcType=INTEGER},
+            </if>
+            <if test="variety != null" >
+                variety=#{variety,jdbcType=VARCHAR},
+            </if>
+            <if test="area != null" >
+                area=#{area,jdbcType=VARCHAR},
+            </if>
+            <if test="recommendation != null" >
+                recommendation=#{recommendation,jdbcType=TINYINT},
+            </if>
+            <if test="salesVolum != null" >
+                sales_volum=#{salesVolum,jdbcType=INTEGER},
+            </if>
+            <if test="characters != null" >
+                characters=#{characters,jdbcType=VARCHAR},
+            </if>
+            <if test="productFunction != null" >
+                product_function=#{productFunction,jdbcType=VARCHAR},
+            </if>
+            <if test="productShape != null" >
+                product_shape=#{productShape,jdbcType=VARCHAR},
+            </if>
+            <if test="productIsDelete != null" >
+                product_is_delete=#{productIsDelete,jdbcType=TINYINT},
+            </if>
+        </set>
+        where product_id= #{productId,jdbcType=INTEGER}
+    </update>
+    <select id="countSelective" parameterType="com.cb.sp.petstore.entity.ProductEntity" resultType="java.lang.Integer">
+        select count(*) from product where 1=1
+        <if test="productId != null" >
+            and product_id=#{productId,jdbcType=INTEGER}
+        </if>
+        <if test="productName != null" >
+            and product_name=#{productName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null" >
+            and price=#{price,jdbcType=BIGINT}
+        </if>
+        <if test="number != null" >
+            and number=#{number,jdbcType=INTEGER}
+        </if>
+        <if test="introduction != null" >
+            and introduction=#{introduction,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null" >
+            and type=#{type,jdbcType=TINYINT}
+        </if>
+        <if test="age != null" >
+            and age=#{age,jdbcType=INTEGER}
+        </if>
+        <if test="variety != null" >
+            and variety=#{variety,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null" >
+            and area=#{area,jdbcType=VARCHAR}
+        </if>
+        <if test="recommendation != null" >
+            and recommendation=#{recommendation,jdbcType=TINYINT}
+        </if>
+        <if test="salesVolum != null" >
+            and sales_volum=#{salesVolum,jdbcType=INTEGER}
+        </if>
+        <if test="characters != null" >
+            and characters=#{characters,jdbcType=VARCHAR}
+        </if>
+        <if test="productFunction != null" >
+            and product_function=#{productFunction,jdbcType=VARCHAR},
+        </if>
+        <if test="productShape != null" >
+            and product_shape=#{productShape,jdbcType=VARCHAR},
+        </if>
+        <if test="productIsDelete != null" >
+            and product_is_delete=#{productIsDelete,jdbcType=TINYINT},
+        </if>
+    </select>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        product_id,product_name,price,number,introduction,type,age,variety,area,recommendation,sales_volum,product_function,characters,product_shape,product_is_delete
+        from product
+        where product_id= #{productId,jdbcType=INTEGER}
+    </select>
+
+    <select id="getProductList" resultMap="ProductResultMap" parameterType="com.cb.sp.petstore.dto.ProductDto">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where 1=1
+        <if test="productId != null" >
+            and product_id=#{productId,jdbcType=INTEGER}
+        </if>
+        <if test="productName != null" >
+            and product_name=#{productName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null" >
+            and price=#{price,jdbcType=BIGINT}
+        </if>
+        <if test="number != null" >
+            and number=#{number,jdbcType=INTEGER}
+        </if>
+        <if test="introduction != null" >
+            and introduction=#{introduction,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null" >
+            and type=#{type,jdbcType=TINYINT}
+        </if>
+        <if test="age != null" >
+            and age=#{age,jdbcType=INTEGER}
+        </if>
+        <if test="variety != null" >
+            and variety=#{variety,jdbcType=VARCHAR}
+        </if>
+        <if test="area != null" >
+            and area=#{area,jdbcType=VARCHAR}
+        </if>
+        <if test="recommendation != null" >
+            and recommendation=#{recommendation,jdbcType=TINYINT}
+        </if>
+        <if test="salesVolum != null" >
+            and sales_volum=#{salesVolum,jdbcType=INTEGER}
+        </if>
+        <if test="characters != null" >
+            and characters=#{characters,jdbcType=VARCHAR}
+        </if>
+        <if test="productFunction != null" >
+            and product_function=#{productFunction,jdbcType=VARCHAR},
+        </if>
+        <if test="productShape != null" >
+            and product_shape=#{productShape,jdbcType=VARCHAR},
+        </if>
+        <if test="productIsDelete != null" >
+            and product_is_delete=#{productIsDelete,jdbcType=TINYINT},
+        </if>
+    </select>
+
+</mapper>
+
+
+
+
+
