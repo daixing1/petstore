@@ -10,65 +10,65 @@ public class CartEntity{
 
 	private	Integer	productNum;
 
-	private	Integer	state;
+	private	Byte	state;
 
 	private	String	productName;
 
 	private	Long	price;
 
-	public	Integer	getCartId(){
-		return	cartId;
+	public Integer getCartId() {
+		return cartId;
 	}
 
-	public	Integer	getUserId(){
-		return	userId;
-	}
-
-	public	Integer	getProductId(){
-		return	productId;
-	}
-
-	public	Integer	getProductNum(){
-		return	productNum;
-	}
-
-	public	Integer	getState(){
-		return	state;
-	}
-
-	public	String	getProductName(){
-		return	productName;
-	}
-
-	public	Long	getPrice(){
-		return	price;
-	}
-
-	public void	setCartId(Integer cartId){
+	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
 
-	public void	setUserId(Integer userId){
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public void	setProductId(Integer productId){
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
 
-	public void	setProductNum(Integer productNum){
+	public Integer getProductNum() {
+		return productNum;
+	}
+
+	public void setProductNum(Integer productNum) {
 		this.productNum = productNum;
 	}
 
-	public void	setState(Integer state){
+	public Byte getState() {
+		return state;
+	}
+
+	public void setState(Byte state) {
 		this.state = state;
 	}
 
-	public void	setProductName(String productName){
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 
-	public void	setPrice(Long price){
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 

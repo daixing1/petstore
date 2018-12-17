@@ -16,13 +16,13 @@ public class ProductDto implements Serializable {
 
     private	String	productName;
 
-    private BigDecimal price;
+    private	Long	price;
 
     private	Integer	number;
 
     private	String	introduction;
 
-    private	Integer	type;
+    private	Byte	type;
 
     private	Integer	age;
 
@@ -30,17 +30,17 @@ public class ProductDto implements Serializable {
 
     private	String	area;
 
-    private	Integer	recommendation;
+    private	Byte	recommendation;
 
     private	Integer	salesVolum;
 
-    private	String	character;
+    private	String	characters;
 
-    private	String	function;
+    private	String	productFunction;
 
-    private	String	shape;
+    private	String	productShape;
 
-    private	Integer	delete;
+    private	Byte	productIsDelete;
 
     public Integer getProductId() {
         return productId;
@@ -58,11 +58,11 @@ public class ProductDto implements Serializable {
         this.productName = productName;
     }
 
-    public BigDecimal getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -82,11 +82,11 @@ public class ProductDto implements Serializable {
         this.introduction = introduction;
     }
 
-    public Integer getType() {
+    public Byte getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(Byte type) {
         this.type = type;
     }
 
@@ -114,11 +114,11 @@ public class ProductDto implements Serializable {
         this.area = area;
     }
 
-    public Integer getRecommendation() {
+    public Byte getRecommendation() {
         return recommendation;
     }
 
-    public void setRecommendation(Integer recommendation) {
+    public void setRecommendation(Byte recommendation) {
         this.recommendation = recommendation;
     }
 
@@ -130,36 +130,36 @@ public class ProductDto implements Serializable {
         this.salesVolum = salesVolum;
     }
 
-    public String getCharacter() {
-        return character;
+    public String getcharacters() {
+        return characters;
     }
 
-    public void setCharacter(String character) {
-        this.character = character;
+    public void setcharacters(String characters) {
+        this.characters = characters;
     }
 
-    public String getFunction() {
-        return function;
+    public String getProductFunction() {
+        return productFunction;
     }
 
-    public void setFunction(String function) {
-        this.function = function;
+    public void setProductFunction(String productFunction) {
+        this.productFunction = productFunction;
     }
 
-    public String getShape() {
-        return shape;
+    public String getProductShape() {
+        return productShape;
     }
 
-    public void setShape(String shape) {
-        this.shape = shape;
+    public void setProductShape(String productShape) {
+        this.productShape = productShape;
     }
 
-    public Integer getDelete() {
-        return delete;
+    public Byte getProductIsDelete() {
+        return productIsDelete;
     }
 
-    public void setDelete(Integer delete) {
-        this.delete = delete;
+    public void setProductIsDelete(Byte productIsDelete) {
+        this.productIsDelete = productIsDelete;
     }
 
     @Override
@@ -176,10 +176,10 @@ public class ProductDto implements Serializable {
                 ", area='" + area + '\'' +
                 ", recommendation=" + recommendation +
                 ", salesVolum=" + salesVolum +
-                ", character='" + character + '\'' +
-                ", function='" + function + '\'' +
-                ", shape='" + shape + '\'' +
-                ", delete=" + delete +
+                ", characters='" + characters + '\'' +
+                ", productFunction='" + productFunction + '\'' +
+                ", productShape='" + productShape + '\'' +
+                ", productIsDelete=" + productIsDelete +
                 '}';
     }
 }

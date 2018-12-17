@@ -1,35 +1,35 @@
-/*
 package com.cb.sp.petstore.dao;
 
-import java.sql.ResultSet;
+import com.cb.sp.petstore.entity.CartEntity;
 
+import java.util.List;
 
-
-
+/**
+ * @author 杨涛
+ * @description TODO
+ * @date 2018/12/12 15:37
+ */
 public interface CartDAO {
 
+    //添加一条完整记录
+    int insert(CartEntity record);
 
-	boolean deleteCart(int cartID);
-	
+    //添加指定列的数据
+    int insertSelective(CartEntity record);
 
-	boolean changeCartReadyToPay(int cartID);
+    //通过Id(主键)删除一条记录
+    int deleteById(Integer cartId);
 
+    //按Id(主键)修改指定列的值
+    int updateByIdSelective(CartEntity record);
 
-	boolean changeStateToPaid(int cartID);
+    //根据条件计算记录条数
+    public int countSelective(CartEntity record);
 
+    //通过Id(主键)查询一条记录
+    CartEntity	selectById(Integer	cartId);
 
-	boolean insertCarts(int userID, int productID, int number, int totalprice, String productName);
+    //根据条件获取记录
+    List<CartEntity> getCartList(CartEntity cartEntity);
 
-
-	boolean modifyNumber(int cartID, int number);
-
-
-	List<carts> getAllCarts();
-
-
-	List<carts> getCartsByUser(int userID);
-	
-
-	int getProdIDByCartID(int cartID);
 }
-*/
