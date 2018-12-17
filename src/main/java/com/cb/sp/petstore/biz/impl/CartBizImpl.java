@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author 杨涛
  * @description TODO
@@ -31,6 +33,36 @@ public class CartBizImpl implements CartBiz {
     public CartEntity selectById(Integer id) {
         CartEntity cartEntity = cartDAO.selectById(id);
         return cartEntity;
+    }
+
+    @Override
+    public int insert(CartEntity record) {
+        return cartDAO.insert(record);
+    }
+
+    @Override
+    public int insertSelective(CartEntity record) {
+        return cartDAO.insertSelective(record);
+    }
+
+    @Override
+    public int deleteById(Integer cartId) {
+        return cartDAO.deleteById(cartId);
+    }
+
+    @Override
+    public int updateByIdSelective(CartEntity record) {
+        return cartDAO.updateByIdSelective(record);
+    }
+
+    @Override
+    public int countSelective(CartEntity record) {
+        return cartDAO.countSelective(record);
+    }
+
+    @Override
+    public List<CartEntity> getCartList(CartEntity cartEntity) {
+        return cartDAO.getCartList(cartEntity);
     }
 }
 

@@ -2,13 +2,12 @@ package com.cb.sp.petstore.facade.impl;
 
 import com.cb.sp.petstore.biz.ProductBiz;
 import com.cb.sp.petstore.dto.ProductDto;
+import com.cb.sp.petstore.entity.ProductEntity;
 import com.cb.sp.petstore.facade.ProductFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +27,46 @@ public class ProductFacadeImpl implements ProductFacade {
 
     @Override
     @RequestMapping(value = "/getProductList", method = RequestMethod.POST)
-    public List<ProductDto> getProductList(ProductDto productDto) {
+    public List<ProductDto> getProductList(@RequestBody ProductDto productDto) {
         List<ProductDto> productDtos = new ArrayList<>();
         LOGGER.info("productDto----------"+productDto+"-------------");
-        //productDtos = productBiz.getProductList(productDto);
+        productDtos = productBiz.getProductList(productDto);
         return productDtos;
+    }
+
+    @Override
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public int insert(@RequestBody ProductEntity record) {
+        return productBiz.insert(record);
+    }
+
+    @Override
+    @RequestMapping(value = "/insertSelective", method = RequestMethod.POST)
+    public int insertSelective(@RequestBody ProductEntity record) {
+        return productBiz.insertSelective(record);
+    }
+
+    @Override
+    @RequestMapping(value = "/deleteById", method = RequestMethod.POST)
+    public int deleteById(@RequestBody Integer productId) {
+        return productBiz.deleteById(productId);
+    }
+
+    @Override
+    @RequestMapping(value = "/updateByIdSelective", method = RequestMethod.POST)
+    public int updateByIdSelective(@RequestBody ProductEntity record) {
+        return productBiz.updateByIdSelective(record);
+    }
+
+    @Override
+    @RequestMapping(value = "/countSelective", method = RequestMethod.POST)
+    public int countSelective(@RequestBody ProductEntity record) {
+        return productBiz.countSelective(record);
+    }
+
+    @Override
+    @RequestMapping(value = "/selectById", method = RequestMethod.GET)
+    public ProductEntity selectById(@RequestParam(required = true, value = "productId") Integer productId) {
+        return productBiz.selectById(productId);
     }
 }

@@ -35,4 +35,29 @@ public class ProductBizImpl implements ProductBiz {
         ProductEntity productEntity = productDAO.selectById(id);
         return productEntity;
     }
+
+    @Override
+    public int insert(ProductEntity record) {
+        return productDAO.insert(record);
+    }
+
+    @Override
+    public int insertSelective(ProductEntity record) {
+        return productDAO.insertSelective(record);
+    }
+
+    @Override
+    public int deleteById(Integer productId) {
+        return productDAO.deleteById(productId);
+    }
+
+    @Override
+    public int updateByIdSelective(ProductEntity record) {
+        return productDAO.updateByIdSelective(record);
+    }
+
+    @Override
+    public int countSelective(ProductEntity record) {
+        return productDAO.countSelective(record);
+    }
 }
