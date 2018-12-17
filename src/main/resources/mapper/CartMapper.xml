@@ -135,4 +135,32 @@
         from cart
         where cart_id= #{cartId,jdbcType=INTEGER}
     </select>
+    <select id="getCartList" parameterType="com.cb.sp.petstore.entity.CartEntity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cart
+        where 1=1
+        <if test="cartId != null" >
+            and cart_id=#{cartId,jdbcType=INTEGER}
+        </if>
+        <if test="userId != null" >
+            and user_id=#{userId,jdbcType=INTEGER}
+        </if>
+        <if test="productId != null" >
+            and product_id=#{productId,jdbcType=INTEGER}
+        </if>
+        <if test="productNum != null" >
+            and product_num=#{productNum,jdbcType=INTEGER}
+        </if>
+        <if test="state != null" >
+            and state=#{state,jdbcType=TINYINT}
+        </if>
+        <if test="productName != null" >
+            and product_name=#{productName,jdbcType=VARCHAR}
+        </if>
+        <if test="price != null" >
+            and price=#{price,jdbcType=BIGINT}
+        </if>
+    </select>
+
 </mapper>

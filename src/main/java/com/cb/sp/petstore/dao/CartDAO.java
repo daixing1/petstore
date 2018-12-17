@@ -2,6 +2,8 @@ package com.cb.sp.petstore.dao;
 
 import com.cb.sp.petstore.entity.CartEntity;
 
+import java.util.List;
+
 /**
  * @author 杨涛
  * @description TODO
@@ -26,5 +28,8 @@ public interface CartDAO {
 
     //通过Id(主键)查询一条记录
     CartEntity	selectById(Integer	cartId);
+
+    //根据条件获取记录
+    List<CartEntity> getCartList(CartEntity cartEntity);
 
 }

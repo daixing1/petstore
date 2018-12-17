@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface ProductDAO {
 
+    //根据条件获取记录
     List<ProductDto> getProductList(ProductDto productDto);
 
     //添加一条完整记录
