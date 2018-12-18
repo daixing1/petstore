@@ -7,10 +7,7 @@ import com.cb.sp.petstore.facade.CartFacade;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,8 @@ import java.util.List;
  * @description TODO
  * @date 2018/12/12 16:32
  */
+@RestController
+@RequestMapping("cart")
 public class CartFacadeImpl implements CartFacade {
     private static Logger LOGGER = LoggerFactory.getLogger(CartFacadeImpl.class);
 
@@ -38,7 +37,7 @@ public class CartFacadeImpl implements CartFacade {
     }
 
     @Override
-    @RequestMapping(value = "/v", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteById", method = RequestMethod.POST)
     public int deleteById(@RequestBody Integer cartId) {
         return cartBiz.deleteById(cartId);
     }
