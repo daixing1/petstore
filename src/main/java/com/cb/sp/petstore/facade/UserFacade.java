@@ -4,6 +4,8 @@ import com.cb.sp.petstore.dto.LoginDto;
 import com.cb.sp.petstore.dto.RegisterDto;
 import com.cb.sp.petstore.entity.UserEntity;
 
+import java.util.Map;
+
 /**
  * @author 戴兴
  * @description TODO
@@ -11,16 +13,20 @@ import com.cb.sp.petstore.entity.UserEntity;
  */
 public interface UserFacade {
 
-    Boolean login(LoginDto loginDto);
+    Map<Boolean, String> login(LoginDto loginDto);
 
-    Integer register(RegisterDto registerDto);
+    Map<Boolean, String> register(RegisterDto registerDto);
 
     UserEntity getUser(Integer userId);
+
+    Boolean updatePwd(Integer userId, String password);
 
     Boolean updateUser(UserEntity userEntity);
 
     Boolean deleteByUserName(String userName);
 
     Boolean deleteByUserId(Integer userId);
+
+    String send(String to, Integer type);
 
 }

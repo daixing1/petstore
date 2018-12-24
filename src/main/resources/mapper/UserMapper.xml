@@ -172,5 +172,8 @@
         SET is_delete = 1
         WHERE user_id = #{UserId}
     </update>
+    <update id="updatePwd" parameterType="map">
+
+    </update>
 
 </mapper>

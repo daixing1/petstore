@@ -7,7 +7,12 @@ import com.cb.sp.petstore.dto.RegisterDto;
 import com.cb.sp.petstore.entity.UserEntity;
 import com.cb.sp.petstore.util.BizException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 戴兴
@@ -19,28 +24,83 @@ public class UserBizImpl implements UserBiz {
 
     @Autowired
     UserDAO userDAO;
+    @Autowired
+    JavaMailSender jms;
 
     @Override
-    public Boolean login(LoginDto loginDto) {
-        String userName = loginDto.getUserName();
-        LoginDto login = userDAO.login(userName);
+    public Map<Boolean, String> login(LoginDto loginDto) {
         Boolean flag = false;
-        if (loginDto.getUserName().equals(login.getUserName()) && loginDto.getPassword().equals(login.getPassword())){
-            flag = true;
+        Map<Boolean, String> map = new HashMap<>();
+        String userName = loginDto.getUserName();
+        String password = loginDto.getPassword();
+        LoginDto login = userDAO.login(userName);
+        if (null == userName || "".equals(userName)){
+            String msg = "账号不能为空";
+            map.put(flag,msg);
         }
-        return flag;
+        if (null == password || "".equals(password)){
+            String msg = "密码不能为空";
+            map.put(flag,msg);
+        }
+        if (userName.equals(login.getUserName()) && password.equals(login.getPassword())){
+            flag = true;
+            map.put(flag, "登录成功");
+        }
+        return map;
     }
 
     @Override
-    public Integer register(RegisterDto registerDto) {
+    public Map<Boolean, String> register(RegisterDto registerDto) {
+        Boolean flag = false;
+        Map<Boolean, String> map = new HashMap<>();
         UserEntity user = userDAO.getUserByEmail(registerDto.getEmail());
         Integer userId = 0;
         if (null == user){
             userDAO.insertUser(registerDto);
             userId = registerDto.getUserId();
+
+            send(registerDto.getEmail(), 1);
+            map.put(true,"注册成功");
         }else {
-            throw new BizException("该邮箱已被注册");
+            map.put(false,"该邮箱已被注册");
         }
-        return userId;
+        return map;
+    }
+
+    @Override
+    public Boolean updatePwd(Integer userId, String password) {
+        Boolean flag = false;
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("password", password);
+        userDAO.updatePwd(map);
+        UserEntity user = userDAO.getUserById(userId);
+        flag = true;
+        send(user.getEmail(), 2);
+        return flag;
+    }
+
+    public String send(String to, Integer type) {
+        //建立邮件消息
+        SimpleMailMessage mainMessage = new SimpleMailMessage();
+        //发送者
+        mainMessage.setFrom("790976320@qq.com");
+        //接收者
+        mainMessage.setTo(to);
+        if (1 == type){
+            //发送的标题
+            mainMessage.setSubject("注册成功");
+            //发送的内容
+            mainMessage.setText("您已在宠物商店中注册成功！");
+        }
+        if (2 == type){
+            //发送的标题
+            mainMessage.setSubject("修改密码");
+            //发送的内容
+            mainMessage.setText("您已在宠物商店中的密码已修改成功！");
+        }
+
+        jms.send(mainMessage);
+        return "发送成功";
     }
 }

@@ -3,6 +3,8 @@ package com.cb.sp.petstore.biz;
 import com.cb.sp.petstore.dto.LoginDto;
 import com.cb.sp.petstore.dto.RegisterDto;
 
+import java.util.Map;
+
 /**
  * @author 戴兴
  * @description TODO
@@ -10,8 +12,10 @@ import com.cb.sp.petstore.dto.RegisterDto;
  */
 public interface UserBiz {
 
-    Boolean login(LoginDto loginDto);
+    Map<Boolean, String> login(LoginDto loginDto);
 
-    Integer register(RegisterDto registerDto);
+    Map<Boolean, String> register(RegisterDto registerDto);
+
+    Boolean updatePwd(Integer userId, String password);
 
 }
