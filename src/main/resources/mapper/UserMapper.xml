@@ -160,6 +160,9 @@
         WHERE user_name like concat('%', #{name}, '%')
         AND is_delete = 0
     </select>
+    <select id="getPWD" resultType="java.lang.String">
+        SELECT password FROM user WHERE email=#{email}
+    </select>
 
     <update id="deleteByUserName" parameterType="String">
         UPDATE user

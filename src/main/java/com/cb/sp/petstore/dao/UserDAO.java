@@ -30,5 +30,7 @@ public interface UserDAO {
 
 	Boolean updatePwd(Map<String, Object> map);
 
+    String getPWD(String email);
+
 
 }

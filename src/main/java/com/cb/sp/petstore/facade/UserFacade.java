@@ -27,6 +27,8 @@ public interface UserFacade {
 
     Boolean deleteByUserId(Integer userId);
 
+    Boolean modifyPED(String email);
+
     String send(String to, Integer type);
 
 }

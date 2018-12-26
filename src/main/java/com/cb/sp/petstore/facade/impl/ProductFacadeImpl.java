@@ -70,4 +70,6 @@ public class ProductFacadeImpl implements ProductFacade {
     public ProductEntity selectById(@RequestParam(required = true, value = "productId") Integer productId) {
         return productBiz.selectById(productId);
     }
+
+
 }

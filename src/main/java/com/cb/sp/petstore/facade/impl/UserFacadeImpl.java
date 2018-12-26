@@ -37,7 +37,7 @@ public class UserFacadeImpl  implements UserFacade {
 
     @Override
     @PostMapping("register")
-    public Map<Boolean, String> register(@RequestBody RegisterDto registerDto) {
+    public Map<Boolean, String> register(@RequestParam RegisterDto registerDto) {
         return userBiz.register(registerDto);
     }
 
@@ -69,6 +69,12 @@ public class UserFacadeImpl  implements UserFacade {
     public Boolean deleteByUserId(@RequestParam("userId") Integer userId) {
         return userDAO.deleteByUserId(userId);
     }
+
+    @Override
+    public Boolean modifyPED(String email) {
+        return userBiz.updatePwd(email);
+    }
+
 
     @Override
     @GetMapping("/send")

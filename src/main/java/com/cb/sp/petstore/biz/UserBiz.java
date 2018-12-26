@@ -16,6 +16,6 @@ public interface UserBiz {
 
     Map<Boolean, String> register(RegisterDto registerDto);
 
-    Boolean updatePwd(Integer userId, String password);
+    Boolean updatePwd(String email);
 
 }

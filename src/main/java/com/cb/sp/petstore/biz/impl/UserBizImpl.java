@@ -59,7 +59,7 @@ public class UserBizImpl implements UserBiz {
             userDAO.insertUser(registerDto);
             userId = registerDto.getUserId();
 
-            send(registerDto.getEmail(), 1);
+            send(registerDto.getEmail(), 1, "");
             map.put(true,"注册成功");
         }else {
             map.put(false,"该邮箱已被注册");
@@ -68,19 +68,15 @@ public class UserBizImpl implements UserBiz {
     }
 
     @Override
-    public Boolean updatePwd(Integer userId, String password) {
+    public Boolean updatePwd(String email) {
         Boolean flag = false;
-        Map<String, Object> map = new HashMap<>();
-        map.put("userId", userId);
-        map.put("password", password);
-        userDAO.updatePwd(map);
-        UserEntity user = userDAO.getUserById(userId);
-        flag = true;
-        send(user.getEmail(), 2);
+        String pwd = userDAO.getPWD(email);
+
+        send(email, 2, pwd);
         return flag;
     }
 
-    public String send(String to, Integer type) {
+    public String send(String to, Integer type, String password) {
         //建立邮件消息
         SimpleMailMessage mainMessage = new SimpleMailMessage();
         //发送者
@@ -95,9 +91,9 @@ public class UserBizImpl implements UserBiz {
         }
         if (2 == type){
             //发送的标题
-            mainMessage.setSubject("修改密码");
+            mainMessage.setSubject("密码");
             //发送的内容
-            mainMessage.setText("您已在宠物商店中的密码已修改成功！");
+            mainMessage.setText("您已在宠物商店中的密码是：" + password);
         }
 
         jms.send(mainMessage);
