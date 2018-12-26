@@ -4,6 +4,9 @@
     <resultMap id="BaseResultMap" type="com.cb.sp.petstore.entity.ProductEntity">
         <id column="product_id" property="productId" jdbcType="INTEGER"/>
         <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="pic_1" property="pic1" jdbcType="VARCHAR"/>
+        <result column="pic_2" property="pic2" jdbcType="VARCHAR"/>
+        <result column="pic_3" property="pic3" jdbcType="VARCHAR"/>
         <result column="price" property="price" jdbcType="BIGINT"/>
         <result column="number" property="number" jdbcType="INTEGER"/>
         <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
@@ -18,31 +21,15 @@
         <result column="product_shape" property="productShape" jdbcType="VARCHAR"/>
         <result column="product_is_delete" property="productIsDelete" jdbcType="TINYINT"/>
     </resultMap>
-
-    <resultMap id="ProductResultMap" type="com.cb.sp.petstore.dto.ProductDto">
-        <id column="product_id" property="productId" jdbcType="INTEGER"/>
-        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
-        <result column="price" property="price" jdbcType="BIGINT"/>
-        <result column="number" property="number" jdbcType="INTEGER"/>
-        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
-        <result column="type" property="type" jdbcType="TINYINT"/>
-        <result column="age" property="age" jdbcType="INTEGER"/>
-        <result column="variety" property="variety" jdbcType="VARCHAR"/>
-        <result column="area" property="area" jdbcType="VARCHAR"/>
-        <result column="recommendation" property="recommendation" jdbcType="TINYINT"/>
-        <result column="sales_volum" property="salesVolum" jdbcType="INTEGER"/>
-        <result column="characters" property="characters" jdbcType="VARCHAR"/>
-        <result column="product_function" property="productFunction" jdbcType="VARCHAR"/>
-        <result column="product_shape" property="productShape" jdbcType="VARCHAR"/>
-        <result column="product_is_delete" property="productIsDelete" jdbcType="TINYINT"/>
-    </resultMap>
-
     <sql id="Base_Column_List">
-		product_id,product_name,price,number,introduction,type,age,variety,area,recommendation,sales_volum,characters,product_function,product_shape,product_is_delete
+		product_id,product_name,pic_1,pic_2,pic_3,price,number,introduction,type,age,variety,area,recommendation,sales_volum,characters,product_function,product_shape,product_is_delete
 	</sql>
     <insert id="insert" parameterType="com.cb.sp.petstore.entity.ProductEntity">
 		insert into product(product_id,
 			product_name,
+			pic_1,
+			pic_2,
+			pic_3,
 			price,
 			number,
 			introduction,
@@ -58,6 +45,9 @@
 			product_is_delete)
 		values (#{productId,jdbcType=INTEGER},
 			#{productName,jdbcType=VARCHAR},
+			#{pic1,jdbcType=VARCHAR},
+			#{pic2,jdbcType=VARCHAR},
+			#{pic3,jdbcType=VARCHAR},
 			#{price,jdbcType=BIGINT},
 			#{number,jdbcType=INTEGER},
 			#{introduction,jdbcType=VARCHAR},
@@ -80,6 +70,15 @@
             </if>
             <if test="productName != null" >
                 product_name,
+            </if>
+            <if test="pic1 != null" >
+                pic_1,
+            </if>
+            <if test="pic2 != null" >
+                pic_2,
+            </if>
+            <if test="pic3 != null" >
+                pic_3,
             </if>
             <if test="price != null" >
                 price,
@@ -127,6 +126,15 @@
             </if>
             <if test="productName != null" >
                 #{productName,jdbcType=VARCHAR},
+            </if>
+            <if test="pic1 != null" >
+                #{pic1,jdbcType=VARCHAR},
+            </if>
+            <if test="pic2 != null" >
+                #{pic2,jdbcType=VARCHAR},
+            </if>
+            <if test="pic3 != null" >
+                #{pic3,jdbcType=VARCHAR},
             </if>
             <if test="price != null" >
                 #{price,jdbcType=BIGINT},
@@ -178,6 +186,15 @@
             <if test="productName != null" >
                 product_name=#{productName,jdbcType=VARCHAR},
             </if>
+            <if test="pic1 != null" >
+                pic_1=#{pic1,jdbcType=VARCHAR},
+            </if>
+            <if test="pic2 != null" >
+                pic_2=#{pic2,jdbcType=VARCHAR},
+            </if>
+            <if test="pic3 != null" >
+                pic_3=#{pic3,jdbcType=VARCHAR},
+            </if>
             <if test="price != null" >
                 price=#{price,jdbcType=BIGINT},
             </if>
@@ -228,6 +245,15 @@
         <if test="productName != null" >
             and product_name=#{productName,jdbcType=VARCHAR}
         </if>
+        <if test="pic1 != null" >
+            and pic_1=#{pic1,jdbcType=VARCHAR}
+        </if>
+        <if test="pic2 != null" >
+            and pic_2=#{pic2,jdbcType=VARCHAR}
+        </if>
+        <if test="pic3 != null" >
+            and pic_3=#{pic3,jdbcType=VARCHAR}
+        </if>
         <if test="price != null" >
             and price=#{price,jdbcType=BIGINT}
         </if>
@@ -259,23 +285,23 @@
             and characters=#{characters,jdbcType=VARCHAR}
         </if>
         <if test="productFunction != null" >
-            and product_function=#{productFunction,jdbcType=VARCHAR},
+            and product_function=#{productFunction,jdbcType=VARCHAR}
         </if>
         <if test="productShape != null" >
-            and product_shape=#{productShape,jdbcType=VARCHAR},
+            and product_shape=#{productShape,jdbcType=VARCHAR}
         </if>
         <if test="productIsDelete != null" >
-            and product_is_delete=#{productIsDelete,jdbcType=TINYINT},
+            and product_is_delete=#{productIsDelete,jdbcType=TINYINT}
         </if>
     </select>
     <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
-        product_id,product_name,price,number,introduction,type,age,variety,area,recommendation,sales_volum,product_function,characters,product_shape,product_is_delete
+        <include refid="Base_Column_List"/>
         from product
         where product_id= #{productId,jdbcType=INTEGER}
     </select>
 
-    <select id="getProductList" resultMap="ProductResultMap" parameterType="com.cb.sp.petstore.dto.ProductDto">
+    <select id="getProductList" resultMap="BaseResultMap" parameterType="com.cb.sp.petstore.dto.ProductDto">
         select
         <include refid="Base_Column_List"/>
         from product
