@@ -40,8 +40,8 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
     @RequestMapping(value = "/deleteById", method = RequestMethod.POST)
-    public int deleteById(@RequestBody Integer cartId) {
-        return cartBiz.deleteById(cartId);
+    public void deleteById(@RequestBody InsertCartDto insertCartDto) {
+         cartBiz.deleteById(insertCartDto.getCartIds());
     }
 
     @Override

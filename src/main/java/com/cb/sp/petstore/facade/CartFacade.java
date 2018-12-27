@@ -20,7 +20,7 @@ public interface CartFacade {
     int insertSelective(CartEntity record);
 
     //通过Id(主键)删除一条记录
-    int deleteById(Integer cartId);
+    void deleteById(InsertCartDto insertCartDto);
 
     //按Id(主键)修改指定列的值
     int updateByIdSelective(CartEntity record);

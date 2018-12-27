@@ -1,6 +1,7 @@
 package com.cb.sp.petstore.biz;
 
 import com.cb.sp.petstore.dto.CartDto;
+import com.cb.sp.petstore.dto.InsertCartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface CartBiz {
     int insertSelective(CartEntity record);
 
     //通过Id(主键)删除一条记录
-    int deleteById(Integer cartId);
+    void deleteById(List<String> cartIds);
 
     //按Id(主键)修改指定列的值
     int updateByIdSelective(CartEntity record);
