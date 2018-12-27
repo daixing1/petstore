@@ -46,9 +46,10 @@ public class CartBizImpl implements CartBiz {
     @Override
     public int insert(CartEntity record) {
         ProductEntity productEntity = productDAO.selectById(record.getProductId());
-        record.setProductName(productEntity.getProductName());
+        LOGGER.info("ProductName-----------------"+productEntity.getProductName()+"-------------");
+        record.setProductName("草拟奶"+productEntity.getProductName()+"1");
         record.setPrice(productEntity.getPrice() * record.getProductNum());
-        return cartDAO.insert(record);
+        return cartDAO.insertSelective(record);
     }
 
     @Override
@@ -94,9 +95,10 @@ public class CartBizImpl implements CartBiz {
     }
 
     @Override
-    public Long sumPrice(List<Integer> cartIds) {
+    public Long sumPrice(List<String> cartIds) {
         Long sum = 0L;
-        for(Integer cartId:cartIds){
+        for(String cartIdstr:cartIds){
+            Integer cartId = Integer.parseInt(cartIdstr);
             CartEntity cartEntity = cartDAO.selectById(cartId);
             if(null != cartEntity.getPrice()) {
                 sum += cartEntity.getPrice();

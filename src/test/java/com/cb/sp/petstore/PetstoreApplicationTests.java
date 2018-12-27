@@ -44,7 +44,7 @@ public class PetstoreApplicationTests {
 
     @Test
     public void cartTest(){
-        CartEntity cartEntity = cartBiz.selectById(1);
+        CartEntity cartEntity = cartBiz.selectById(7);
         System.out.println("cartEntity==========="+cartEntity+"=========");
     }
 
@@ -64,10 +64,20 @@ public class PetstoreApplicationTests {
 
     @Test
     public void cartSumTest(){
-        List<Integer> cartIds = new ArrayList<>();
-        cartIds.add(1);
+        List<String> cartIds = new ArrayList<>();
+        cartIds.add("7");
         Long sum = cartBiz.sumPrice(cartIds);
         System.out.println("sum==========="+sum+"=========");
+    }
+
+    @Test
+    public void cartInsertTest(){
+        CartEntity cartEntity = new CartEntity();
+        cartEntity.setProductId(1);
+        cartEntity.setProductNum(3);
+        cartEntity.setUserId(5656);
+        cartBiz.insert(cartEntity);
+        System.out.println("sum==========="+cartEntity+"=========");
     }
 
 }

@@ -1,6 +1,7 @@
 package com.cb.sp.petstore.facade;
 
 import com.cb.sp.petstore.dto.CartDto;
+import com.cb.sp.petstore.dto.InsertCartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface CartFacade {
     //根据条件获取记录
     List<CartDto> getCartList(CartEntity cartEntity);
 
-    Long sumPrice(List<Integer> cartIds);
+    Long sumPrice(InsertCartDto insertCartDto);
 
 }
 

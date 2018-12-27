@@ -3,6 +3,7 @@ package com.cb.sp.petstore.facade.impl;
 
 import com.cb.sp.petstore.biz.CartBiz;
 import com.cb.sp.petstore.dto.CartDto;
+import com.cb.sp.petstore.dto.InsertCartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 import com.cb.sp.petstore.facade.CartFacade;
 import org.slf4j.Logger;
@@ -69,8 +70,8 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
     @RequestMapping(value = "/sumPrice", method = RequestMethod.POST)
-    public Long sumPrice(@RequestBody List<Integer> cartIds) {
-        return cartBiz.sumPrice(cartIds);
+    public Long sumPrice(@RequestBody InsertCartDto insertCartDto) {
+        return cartBiz.sumPrice(insertCartDto.getCartIds());
     }
 }
 
