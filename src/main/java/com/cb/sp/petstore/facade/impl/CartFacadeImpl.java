@@ -69,8 +69,8 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
     @RequestMapping(value = "/sumPrice", method = RequestMethod.POST)
-    public Long sumPrice(@RequestBody List<CartDto> cartDtos) {
-        return cartBiz.sumPrice(cartDtos);
+    public Long sumPrice(@RequestBody List<Integer> cartIds) {
+        return cartBiz.sumPrice(cartIds);
     }
 }
 
