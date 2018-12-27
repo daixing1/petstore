@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public interface UserFacade {
 
-    Map<Boolean, String> login(LoginDto loginDto);
+    Map<String, Object> login(LoginDto loginDto);
 
     Map<Boolean, String> register(RegisterDto registerDto);
 
