@@ -28,7 +28,7 @@ public class PetstoreApplicationTests {
     @Test
     public void bizTest() {
         ProductDto productDto = new ProductDto();
-        productDto.setProductId(1);
+        productDto.setType(1);
         List<ProductDto> productDtos = productBiz.getProductList(productDto);
         System.out.println("productDtos------------"+productDtos+"----------");
     }

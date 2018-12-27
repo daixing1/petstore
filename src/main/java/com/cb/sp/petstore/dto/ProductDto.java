@@ -28,7 +28,7 @@ public class ProductDto implements Serializable {
 
     private	String	introduction;
 
-    private	Byte	type;
+    private	Integer	type;
 
     private	Integer	age;
 
@@ -36,7 +36,7 @@ public class ProductDto implements Serializable {
 
     private	String	area;
 
-    private	Byte	recommendation;
+    private	Integer	recommendation;
 
     private	Integer	salesVolum;
 
@@ -46,149 +46,149 @@ public class ProductDto implements Serializable {
 
     private	String	productShape;
 
-    private	Byte	productIsDelete;
+    private	Integer	productIsDelete;
 
-    public	Integer	getProductId(){
-        return	productId;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public	String	getProductName(){
-        return	productName;
-    }
-
-    public	String	getPic1(){
-        return	pic1;
-    }
-
-    public	String	getPic2(){
-        return	pic2;
-    }
-
-    public	String	getPic3(){
-        return	pic3;
-    }
-
-    public	Long	getPrice(){
-        return	price;
-    }
-
-    public	Integer	getNumber(){
-        return	number;
-    }
-
-    public	String	getIntroduction(){
-        return	introduction;
-    }
-
-    public	Byte	getType(){
-        return	type;
-    }
-
-    public	Integer	getAge(){
-        return	age;
-    }
-
-    public	String	getVariety(){
-        return	variety;
-    }
-
-    public	String	getArea(){
-        return	area;
-    }
-
-    public	Byte	getRecommendation(){
-        return	recommendation;
-    }
-
-    public	Integer	getSalesVolum(){
-        return	salesVolum;
-    }
-
-    public	String	getCharacters(){
-        return	characters;
-    }
-
-    public	String	getProductFunction(){
-        return	productFunction;
-    }
-
-    public	String	getProductShape(){
-        return	productShape;
-    }
-
-    public	Byte	getProductIsDelete(){
-        return	productIsDelete;
-    }
-
-    public void	setProductId(Integer productId){
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public void	setProductName(String productName){
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public void	setPic1(String pic1){
+    public String getPic1() {
+        return pic1;
+    }
+
+    public void setPic1(String pic1) {
         this.pic1 = pic1;
     }
 
-    public void	setPic2(String pic2){
+    public String getPic2() {
+        return pic2;
+    }
+
+    public void setPic2(String pic2) {
         this.pic2 = pic2;
     }
 
-    public void	setPic3(String pic3){
+    public String getPic3() {
+        return pic3;
+    }
+
+    public void setPic3(String pic3) {
         this.pic3 = pic3;
     }
 
-    public void	setPrice(Long price){
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public void	setNumber(Integer number){
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
-    public void	setIntroduction(String introduction){
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
         this.introduction = introduction;
     }
 
-    public void	setType(Byte type){
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public void	setAge(Integer age){
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public void	setVariety(String variety){
+    public String getVariety() {
+        return variety;
+    }
+
+    public void setVariety(String variety) {
         this.variety = variety;
     }
 
-    public void	setArea(String area){
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
         this.area = area;
     }
 
-    public void	setRecommendation(Byte recommendation){
+    public Integer getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(Integer recommendation) {
         this.recommendation = recommendation;
     }
 
-    public void	setSalesVolum(Integer salesVolum){
+    public Integer getSalesVolum() {
+        return salesVolum;
+    }
+
+    public void setSalesVolum(Integer salesVolum) {
         this.salesVolum = salesVolum;
     }
 
-    public void	setCharacters(String characters){
+    public String getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(String characters) {
         this.characters = characters;
     }
 
-    public void	setProductFunction(String productFunction){
+    public String getProductFunction() {
+        return productFunction;
+    }
+
+    public void setProductFunction(String productFunction) {
         this.productFunction = productFunction;
     }
 
-    public void	setProductShape(String productShape){
+    public String getProductShape() {
+        return productShape;
+    }
+
+    public void setProductShape(String productShape) {
         this.productShape = productShape;
     }
 
-    public void	setProductIsDelete(Byte productIsDelete){
+    public Integer getProductIsDelete() {
+        return productIsDelete;
+    }
+
+    public void setProductIsDelete(Integer productIsDelete) {
         this.productIsDelete = productIsDelete;
     }
 
