@@ -25,7 +25,7 @@ public class CartFacadeImpl implements CartFacade {
     private CartBiz cartBiz;
 
     @Override
-    @RequestMapping(value = "/getProductList", method = RequestMethod.POST)
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public int insert(@RequestBody CartEntity record) {
         return cartBiz.insert(record);
     }
