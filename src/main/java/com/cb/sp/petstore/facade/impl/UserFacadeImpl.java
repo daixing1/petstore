@@ -31,7 +31,7 @@ public class UserFacadeImpl  implements UserFacade {
 
     @Override
     @PostMapping("login")
-    public Map<Boolean, String> login(@RequestBody LoginDto loginDto) {
+    public Map<String, Object> login(@RequestBody LoginDto loginDto) {
         return userBiz.login(loginDto);
     }
 
@@ -71,6 +71,7 @@ public class UserFacadeImpl  implements UserFacade {
     }
 
     @Override
+    @GetMapping("modifyPWD")
     public Boolean modifyPED(String email) {
         return userBiz.updatePwd(email);
     }

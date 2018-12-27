@@ -28,23 +28,24 @@ public class UserBizImpl implements UserBiz {
     JavaMailSender jms;
 
     @Override
-    public Map<Boolean, String> login(LoginDto loginDto) {
+    public Map<String, Object> login(LoginDto loginDto) {
         Boolean flag = false;
-        Map<Boolean, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         String userName = loginDto.getUserName();
         String password = loginDto.getPassword();
         LoginDto login = userDAO.login(userName);
         if (null == userName || "".equals(userName)){
             String msg = "账号不能为空";
-            map.put(flag,msg);
+            map.put("message",msg);
         }
         if (null == password || "".equals(password)){
             String msg = "密码不能为空";
-            map.put(flag,msg);
+            map.put("message",msg);
         }
         if (userName.equals(login.getUserName()) && password.equals(login.getPassword())){
             flag = true;
-            map.put(flag, "登录成功");
+            map.put("message", "登录成功");
+            map.put("userId",login.getUserId());
         }
         return map;
     }
@@ -71,8 +72,10 @@ public class UserBizImpl implements UserBiz {
     public Boolean updatePwd(String email) {
         Boolean flag = false;
         String pwd = userDAO.getPWD(email);
-
-        send(email, 2, pwd);
+        if (null != pwd){
+            flag = true;
+            send(email, 2, pwd);
+        }
         return flag;
     }
 
