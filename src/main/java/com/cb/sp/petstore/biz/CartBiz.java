@@ -32,7 +32,7 @@ public interface CartBiz {
     //根据条件获取记录
     List<CartDto> getCartList(CartEntity cartEntity);
 
-    Long sumPrice(List<Integer> cartIds);
+    Long sumPrice(List<String> cartIds);
 
 }
 
