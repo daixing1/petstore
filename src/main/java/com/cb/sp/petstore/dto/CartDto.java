@@ -25,7 +25,7 @@ public class CartDto implements Serializable {
 
     private	Integer	productNum;
 
-    private	Byte	state;
+    private	Integer	state;
 
     private	String	productName;
 
@@ -87,11 +87,11 @@ public class CartDto implements Serializable {
         this.productNum = productNum;
     }
 
-    public Byte getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Byte state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
