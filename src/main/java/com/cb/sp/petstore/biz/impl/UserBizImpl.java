@@ -75,6 +75,8 @@ public class UserBizImpl implements UserBiz {
         if (null != pwd){
             flag = true;
             send(email, 2, pwd);
+        }else {
+            throw new BizException("无此邮箱！", BizException.PARAM_DELETION);
         }
         return flag;
     }

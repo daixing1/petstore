@@ -37,7 +37,7 @@ public class UserFacadeImpl  implements UserFacade {
 
     @Override
     @PostMapping("register")
-    public Map<Boolean, String> register(@RequestParam RegisterDto registerDto) {
+    public Map<Boolean, String> register(@RequestBody RegisterDto registerDto) {
         return userBiz.register(registerDto);
     }
 
