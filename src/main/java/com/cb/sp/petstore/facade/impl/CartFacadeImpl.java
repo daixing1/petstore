@@ -2,6 +2,7 @@ package com.cb.sp.petstore.facade.impl;
 
 
 import com.cb.sp.petstore.biz.CartBiz;
+import com.cb.sp.petstore.dto.CartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 import com.cb.sp.petstore.facade.CartFacade;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class CartFacadeImpl implements CartFacade {
     private CartBiz cartBiz;
 
     @Override
-    @RequestMapping(value = "/getProductList", method = RequestMethod.POST)
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public int insert(@RequestBody CartEntity record) {
         return cartBiz.insert(record);
     }
@@ -62,8 +63,14 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override
     @RequestMapping(value = "/getCartList", method = RequestMethod.POST)
-    public List<CartEntity> getCartList(@RequestBody CartEntity cartEntity) {
+    public List<CartDto> getCartList(@RequestBody CartEntity cartEntity) {
         return cartBiz.getCartList(cartEntity);
+    }
+
+    @Override
+    @RequestMapping(value = "/sumPrice", method = RequestMethod.POST)
+    public Long sumPrice(@RequestBody List<CartDto> cartDtos) {
+        return cartBiz.sumPrice(cartDtos);
     }
 }
 
