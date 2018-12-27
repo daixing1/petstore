@@ -5,6 +5,7 @@ import com.cb.sp.petstore.biz.ProductBiz;
 import com.cb.sp.petstore.dao.CartDAO;
 import com.cb.sp.petstore.dao.ProductDAO;
 import com.cb.sp.petstore.dto.CartDto;
+import com.cb.sp.petstore.dto.InsertCartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 import com.cb.sp.petstore.entity.ProductEntity;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class CartBizImpl implements CartBiz {
     public int insert(CartEntity record) {
         ProductEntity productEntity = productDAO.selectById(record.getProductId());
         LOGGER.info("ProductName-----------------"+productEntity.getProductName()+"-------------");
-        record.setProductName("草拟奶"+productEntity.getProductName()+"1");
+        record.setProductName(productEntity.getProductName());
         record.setPrice(productEntity.getPrice() * record.getProductNum());
         return cartDAO.insertSelective(record);
     }
@@ -58,8 +59,11 @@ public class CartBizImpl implements CartBiz {
     }
 
     @Override
-    public int deleteById(Integer cartId) {
-        return cartDAO.deleteById(cartId);
+    public void deleteById(List<String> cartIds) {
+        for(String cartIdstr:cartIds){
+            Integer cartId = Integer.parseInt(cartIdstr);
+            cartDAO.deleteById(cartId);
+        }
     }
 
     @Override

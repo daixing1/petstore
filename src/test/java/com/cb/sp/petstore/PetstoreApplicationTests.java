@@ -50,8 +50,10 @@ public class PetstoreApplicationTests {
 
     @Test
     public void cartDelTest(){
-        int cartEntity = cartBiz.deleteById(1);
-        System.out.println("cartEntity==========="+cartEntity+"=========");
+        List<String> cartIds = new ArrayList<>();
+        cartIds.add("1");
+        cartBiz.deleteById(cartIds);
+        System.out.println("cartIds==========="+cartIds+"=========");
     }
 
     @Test
@@ -72,12 +74,14 @@ public class PetstoreApplicationTests {
 
     @Test
     public void cartInsertTest(){
-        CartEntity cartEntity = new CartEntity();
-        cartEntity.setProductId(1);
-        cartEntity.setProductNum(3);
-        cartEntity.setUserId(5656);
-        cartBiz.insert(cartEntity);
-        System.out.println("sum==========="+cartEntity+"=========");
+        for (int i = 1;i<=10; i++) {
+            CartEntity cartEntity = new CartEntity();
+            cartEntity.setProductId(i);
+            cartEntity.setProductNum(i);
+            cartEntity.setUserId(i);
+            cartBiz.insert(cartEntity);
+            System.out.println("sum===========" + cartEntity + "=========");
+        }
     }
 
 }
