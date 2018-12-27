@@ -64,11 +64,9 @@ public class PetstoreApplicationTests {
 
     @Test
     public void cartSumTest(){
-        List<CartDto> cartDtos = new ArrayList<>();
-        CartDto cartDto = new CartDto();
-        cartDto.setPrice(2021L);
-        cartDtos.add(cartDto);
-        Long sum = cartBiz.sumPrice(cartDtos);
+        List<Integer> cartIds = new ArrayList<>();
+        cartIds.add(1);
+        Long sum = cartBiz.sumPrice(cartIds);
         System.out.println("sum==========="+sum+"=========");
     }
 
