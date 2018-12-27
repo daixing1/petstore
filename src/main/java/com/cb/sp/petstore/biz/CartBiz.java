@@ -1,5 +1,6 @@
 package com.cb.sp.petstore.biz;
 
+import com.cb.sp.petstore.dto.CartDto;
 import com.cb.sp.petstore.entity.CartEntity;
 
 import java.util.List;
@@ -29,7 +30,9 @@ public interface CartBiz {
     public int countSelective(CartEntity record);
 
     //根据条件获取记录
-    List<CartEntity> getCartList(CartEntity cartEntity);
+    List<CartDto> getCartList(CartEntity cartEntity);
+
+    Long sumPrice(List<CartDto> cartDtos);
 
 }
 

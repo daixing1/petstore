@@ -1,13 +1,19 @@
 package com.cb.sp.petstore.biz.impl;
 
 import com.cb.sp.petstore.biz.CartBiz;
+import com.cb.sp.petstore.biz.ProductBiz;
 import com.cb.sp.petstore.dao.CartDAO;
+import com.cb.sp.petstore.dao.ProductDAO;
+import com.cb.sp.petstore.dto.CartDto;
 import com.cb.sp.petstore.entity.CartEntity;
+import com.cb.sp.petstore.entity.ProductEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +34,8 @@ public class CartBizImpl implements CartBiz {
 
     @Autowired
     private CartDAO cartDAO;
+    @Autowired
+    private ProductDAO productDAO;
 
     @Override
     public CartEntity selectById(Integer id) {
@@ -37,6 +45,8 @@ public class CartBizImpl implements CartBiz {
 
     @Override
     public int insert(CartEntity record) {
+        ProductEntity productEntity = productDAO.selectById(record.getProductId());
+        record.setPrice(productEntity.getPrice() * record.getProductNum());
         return cartDAO.insert(record);
     }
 
@@ -61,8 +71,34 @@ public class CartBizImpl implements CartBiz {
     }
 
     @Override
-    public List<CartEntity> getCartList(CartEntity cartEntity) {
-        return cartDAO.getCartList(cartEntity);
+    public List<CartDto> getCartList(CartEntity cartEntity) {
+        List<CartEntity> cartEntities = cartDAO.getCartList(cartEntity);
+        List<CartDto> cartDtos = new ArrayList<>();
+        for (CartEntity cartEntity1:cartEntities){
+            CartDto cartDto = new CartDto();
+            BeanUtils.copyProperties(cartEntity1,cartDto);
+            ProductEntity productEntity = productDAO.selectById(cartEntity1.getProductId());
+            if (null != productEntity.getPic1()) {
+                cartDto.setPic1(productEntity.getPic1());
+            }
+            if (null != productEntity.getPic2()) {
+                cartDto.setPic2(productEntity.getPic2());
+            }
+            if (null != productEntity.getPic3()) {
+                cartDto.setPic3(productEntity.getPic3());
+            }
+            cartDtos.add(cartDto);
+        }
+        return cartDtos;
+    }
+
+    @Override
+    public Long sumPrice(List<CartDto> cartDtos) {
+        Long sum = 0L;
+        for(CartDto cartDto:cartDtos){
+            sum += cartDto.getPrice();
+        }
+        return sum;
     }
 }
 
