@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
+/*import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;*/
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -28,7 +28,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  *测试导出数据
  */
 @SuppressWarnings("serial")
-public class testExcel extends HttpServlet{
+public class testExcel /*extends HttpServlet*/{
 
 
     public static void main(String[] args) throws UnsupportedEncodingException {
